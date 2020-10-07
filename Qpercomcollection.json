@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "4374838a-0632-4232-b792-eb0ddf3d5e97",
+		"name": "Qpercomcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add-Exam-With credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3358be35-3a71-4e11-9ada-bb0a32d33b98",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Exam Added successfully\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"general\": \r\n   { \"test_name\":  \"testExam\",\r\n     \"show_desc\":  \"true\",\r\n     \"enable_desc\":  \"false\",\r\n     \"is_enable\":  \"false\" },\r\n  \"timing\": \r\n   { \"open\":  \"1595324796179\",\r\n     \"close\":  \"1595324796179\",\r\n     \"limit\":  0,\r\n     \"expires\":  0 },\r\n  \"grading\": \r\n   { \"is_standard\":  \"true\", \"passing\":  40, \"attempts\":  1, \"grading_method\":  1 },\r\n   \"id\":38,\r\n  \"layout\": \r\n   { \"qpa\":  1,\r\n     \"navigation\":  \"true\",\r\n     \"shuffle_ques\":  \"false\",\r\n     \"shuffle_ans\":  \"false\",\r\n     \"answer_grade\":  0,\r\n     \"question_grade\":  0,\r\n     \"order\":  1 },\r\n  \"after_exam\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"after_attempt\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"created_by\":  \"poojitha@teknotrait.com\",\r\n  \"created_on\":  1595325920762 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/addExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addExam-without-value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b68d4b6d-307c-45df-a760-29c15aecb992",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"SyntaxError: Unexpected token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"general\": \r\n   { \"test_name\":  \"\",\r\n     \"show_desc\":  \"true\",\r\n     \"enable_desc\":  \"false\",\r\n     \"is_enable\":  \"false\" },\r\n  \"timing\": \r\n   { \"open\":  \"\",\r\n     \"close\":  \"\",\r\n     \"limit\":  0,\r\n     \"expires\":  0 },\r\n  \"grading\": \r\n   { \"is_standard\":  \"true\", \"passing\":  , \"attempts\":  1, \"grading_method\":  1 },\r\n   \"id\":38,\r\n  \"layout\": \r\n   { \"qpa\":  1,\r\n     \"navigation\":  \"true\",\r\n     \"shuffle_ques\":  \"false\",\r\n     \"shuffle_ans\":  \"false\",\r\n     \"answer_grade\":  0,\r\n     \"question_grade\":  0,\r\n     \"order\":  1 },\r\n  \"after_exam\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n     ],\r\n  \"after_attempt\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n     ],\r\n  \"created_by\":  \"poojitha@teknotrait.com\",\r\n  \"created_on\":  1595325920762 }"
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/addExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateExam-with values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b793cb1e-9f3e-4027-a7c4-a13861032936",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Updated Successfully\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"update\": { \"general\": \r\n   { \"test_name\":  \"testExam3\",\r\n     \"show_desc\":  \"true\",\r\n     \"enable_desc\":  \"false\",\r\n     \"is_enable\":  \"false\" },\r\n  \"timing\": \r\n   { \"open\":  \"1595324796179\",\r\n     \"close\":  \"1595324796179\",\r\n     \"limit\":  0,\r\n     \"expires\":  0 },\r\n  \"grading\": \r\n   { \"is_standard\":  \"true\", \"passing\":  40, \"attempts\":  1, \"grading_method\":  1 },\r\n   \"id\":\"38\",\r\n  \"layout\": \r\n   { \"qpa\":  1,\r\n     \"navigation\":  \"true\",\r\n     \"shuffle_ques\":  \"false\",\r\n     \"shuffle_ans\":  \"false\",\r\n     \"answer_grade\":  0,\r\n     \"question_grade\":  0,\r\n     \"order\":  1 },\r\n  \"after_exam\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"after_attempt\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"created_by\":  \"poojitha@teknotrait.com\",\r\n  \"created_on\":  1595325920762 }}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/updateExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"updateExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateExam-withoutvalues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "177c93fa-f5fd-4629-9517-16ed316e4bde",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"SyntaxError: Unexpected token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"update\": { \"general\": \r\n   { \"test_name\":  \"\",\r\n     \"show_desc\":  \"true\",\r\n     \"enable_desc\":  \"false\",\r\n     \"is_enable\":  \"false\" },\r\n  \"timing\": \r\n   { \"open\":  \"\",\r\n     \"close\":  \"\",\r\n     \"limit\":  0,\r\n     \"expires\":  0 },\r\n  \"grading\": \r\n   { \"is_standard\":  \"true\", \"passing\": , \"attempts\":  1, \"grading_method\":  1 },\r\n   \"id\":\"38\",\r\n  \"layout\": \r\n   { \"qpa\":  1,\r\n     \"navigation\":  \"true\",\r\n     \"shuffle_ques\":  \"false\",\r\n     \"shuffle_ans\":  \"false\",\r\n     \"answer_grade\":  0,\r\n     \"question_grade\":  0,\r\n     \"order\":  1 },\r\n  \"after_exam\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"after_attempt\": \r\n   [ { \"id\":  \"0\", \"is_check\":  \"true\" }\r\n      ],\r\n  \"created_by\":  \"poojitha@teknotrait.com\",\r\n  \"created_on\":  1595325920762 }}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/updateExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"updateExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteExam-Withvalue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fb40f2b-5ef2-4f17-8a0c-7eb5653e0d43",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Deleted  successfully\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"_id\": 32\r\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/deleteExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"deleteExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteExam-without value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2cc320f6-98c4-4b2f-9b81-abbba61abb61",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"SyntaxError: Unexpected token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"_id\": \r\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/admin/deleteExam",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"deleteExam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getExams",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9318edc1-4288-4c8e-8195-a702ed1040c2",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Fetched  successfully\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/admin/getExams",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"getExams"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
